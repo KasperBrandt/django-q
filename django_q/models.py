@@ -19,9 +19,9 @@ class Task(models.Model):
     kwargs = PickledObjectField(null=True, protocol=-1)
     result = PickledObjectField(null=True, protocol=-1)
     group = models.CharField(max_length=100, editable=False, null=True)
-    started = models.DateTimeField(editable=False)
-    stopped = models.DateTimeField(editable=False)
-    success = models.BooleanField(default=True, editable=False)
+    started = models.DateTimeField(editable=False, db_index=True)
+    stopped = models.DateTimeField(editable=False, db_index=True)
+    success = models.BooleanField(default=True, editable=False, db_index=True)
 
     @staticmethod
     def get_result(task_id):
